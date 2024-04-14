@@ -1,13 +1,14 @@
 import express from "express";
 const app = express();
-import connection from "./database/database.js";
+import Task from "./database/Task.js";
+import mysql from "./database/database.js";
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.set("view engine", "ejs");
 
 try {
-  await connection.authenticate();
+  await mysql.authenticate();
   console.log("Connection has been established successfully.");
 } catch (error) {
   console.error("Unable to connect to the database:", error);
