@@ -1,11 +1,17 @@
 import express from "express";
-
 const app = express();
+import connection from "./database/database.js";
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.set("view engine", "ejs");
+
+try {
+  await connection.authenticate();
+  console.log("Connection has been established successfully.");
+} catch (error) {
+  console.error("Unable to connect to the database:", error);
+}
 
 app.get("/", (req, res) => {
   res.render("index");
