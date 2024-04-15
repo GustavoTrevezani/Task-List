@@ -3,7 +3,7 @@ const app = express();
 import Task from "./database/Task.js";
 import mysql from "./database/database.js";
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.set("view engine", "ejs");
 
