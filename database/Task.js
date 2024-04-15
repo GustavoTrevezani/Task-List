@@ -1,13 +1,13 @@
 import { Sequelize, DataTypes } from "sequelize";
 import mysql from "./database.js";
 
-const Task = mysql.define("task", {
+const Task = mysql.define("tasks", {
   // Model attributes are defined here
-  Title: {
+  title: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  Description: {
+  description: {
     type: DataTypes.TEXT,
     allowNull: false,
     // allowNull defaults to true
