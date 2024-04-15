@@ -9,17 +9,18 @@
   </head>
   <body>
     <div class="container">
-      <h1>New task</h1>
+      <h1>Task List Demo App</h1>
+      <a href="/newtask"><button class="btn btn-primary">New Task</button></a>
       <hr />
-      <form method="POST" action="/">
-        <label>Title</label>
-        <input type="text" placeholder="Title" class="form-control" name="title" required />
-        <br />
-        <label>Description</label>
-        <textarea placeholder="Describe your task" class="form-control" name="description" required></textarea>
-        <br />
-        <button class="btn btn-primary">Confirm</button>
+      <% taskToMake.forEach(task => {%>
+      <p>Title: <%=task.title%></p>
+      <p>Description: <%=task.description%></p>
+      <form method="POST" action="/delete">
+        <input type="hidden" name="id" value="<%=task.id%>" />
+        <button class="btn btn-danger">Delete</button>
+        <hr />
       </form>
+      <%})%>
     </div>
   </body>
   <script
